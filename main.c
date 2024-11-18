@@ -1080,7 +1080,8 @@ void in_after_node(char x)//Insertion after any node
                 clear();
                 y_center();
                 struct node* temp=head1;
-                while (temp != NULL && temp->data != pos)
+                int check=atoi(temp->data);
+                while (temp != NULL && check != pos)
                 {
                         temp = temp->next;
                 }
@@ -1097,7 +1098,7 @@ void in_after_node(char x)//Insertion after any node
                         return;
                 }
                 int i = 0;
-                if (temp->data == pos)
+                if (check == pos)
                 {
                         struct node *newnode = (struct node *)malloc(sizeof(struct node));
                         if (newnode == NULL)
@@ -1163,9 +1164,10 @@ void in_after_node(char x)//Insertion after any node
                 fflush(stdin);
                 clear();
                 y_center();
-                struct node* temp=head1;
+                struct node* temp=head2;
                 struct node* temp2;
-                while (temp != NULL && temp->data != pos)
+                int check=atoi(temp->data);
+                while (temp != NULL && check != pos)
                 {
                         temp2=temp;
                         temp = temp->next;
@@ -1183,7 +1185,7 @@ void in_after_node(char x)//Insertion after any node
                         return;
                 }
                 int i = 0;
-                if (temp->data == pos)
+                if (check == pos)
                 {
                         struct node *newnode = (struct node *)malloc(sizeof(struct node));
                         if (newnode == NULL)
