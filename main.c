@@ -1466,6 +1466,418 @@ void in_after_node(char x) // Insertion after any node
         }
 }
 
+void in_before_node(char x) // Insertion before any node
+{
+        color(5);
+        clear();
+        y_center();
+        if (x == '1') // Singly Linked List Insertion before any node
+        {
+                int pos;
+                if (head1 == NULL)
+                {
+                        in_at_beg(x);
+                        return;
+                }
+                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                printf("\t\t\t\t\t\t\t\t|\t\tEnter your node : \t\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                gotoxy(102, 17);
+                scanf("%d", &pos);
+                getchar();
+                fflush(stdin);
+                clear();
+                y_center();
+                struct node *temp = head1;
+                struct node *temp2 = NULL;
+                int check = atoi(temp->data);
+                while (temp->next != NULL && check != pos)
+                {
+                        temp2 = temp;
+                        temp = temp->next;
+                        check = atoi(temp->data);
+                }
+                if (temp == head1 && temp2 == NULL && check == pos)
+                {
+                        in_at_beg(x);
+                        return;
+                }
+                if (temp->next == NULL && check != pos)
+                {
+                        printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t|\t\t!! Invalid Node  !! \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t|\t\tpress Enter to continue :  \t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                        gotoxy(105, 18);
+                        getchar();
+                        return;
+                }
+                int i = 0;
+                if (check == pos)
+                {
+                        struct node *newnode = (struct node *)malloc(sizeof(struct node));
+                        if (newnode == NULL)
+                        {
+                                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\t!! Memory is FULL !! \t\t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\tpress Enter to continue :  \t\t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                                gotoxy(105, 18);
+                                getchar();
+                                return;
+                        }
+                        count1++;
+                        printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t|\t\tEnter your data : \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        gotoxy(100, 17);
+                        scanf("%[^\n]s", newnode->data);
+                        getchar();
+                        fflush(stdin);
+                        int check = validate_data(newnode->data);
+                        while (check == 0)
+                        {
+                                system("cls");
+                                printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\t---!! Invalid data !!---\t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\tEnter your data again : \t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                gotoxy(105, 18);
+                                scanf("%10[^\n]s", newnode->data);
+                                getchar();
+                                fflush(stdin);
+                                check = validate_data(newnode->data);
+                                i = 1;
+                        }
+                        newnode->next = temp;
+                        temp2->next = newnode;
+                        printf("\n");
+                        printf("\t\t\t\t\t\t\t\t|\t!! Data successfully added !! \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t|\t Press Enter to continue : \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                        gotoxy(105, 20 + i);
+                        getchar();
+                        fflush(stdin);
+                }
+        }
+        else if (x == '2') // Doubly Linked List Insertion before any node
+        {
+                int pos;
+                if (head2 == NULL)
+                {
+                        in_at_beg(x);
+                        return;
+                }
+                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                printf("\t\t\t\t\t\t\t\t|\t\tEnter your node : \t\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                gotoxy(102, 17);
+                scanf("%d", &pos);
+                getchar();
+                fflush(stdin);
+                clear();
+                y_center();
+                struct node *temp = head2;
+                struct node *temp2 = NULL;
+                int check = atoi(temp->data);
+                while (temp->next != NULL && check != pos)
+                {
+                        temp2 = temp;
+                        temp = temp->next;
+                        check = atoi(temp->data);
+                }
+                if (temp == head2 && temp2 == NULL && check == pos)
+                {
+                        in_at_beg(x);
+                        return;
+                }
+                temp = temp->next;
+                if (temp->next == NULL&& check!=pos)
+                {
+                        printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t|\t\t!! Invalid Node  !! \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t|\t\tpress Enter to continue :\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                        gotoxy(105, 18);
+                        getchar();
+                        return;
+                }
+                int i = 0;
+                if (check == pos)
+                {
+                        struct node *newnode = (struct node *)malloc(sizeof(struct node));
+                        if (newnode == NULL)
+                        {
+                                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\t!! Memory is FULL !! \t\t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\tpress Enter to continue :  \t\t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                                gotoxy(105, 18);
+                                getchar();
+                                return;
+                        }
+                        count1++;
+                        printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t|\t\tEnter your data : \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        gotoxy(100, 17);
+                        scanf("%[^\n]s", newnode->data);
+                        getchar();
+                        fflush(stdin);
+                        int check = validate_data(newnode->data);
+                        while (check == 0)
+                        {
+                                system("cls");
+                                printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\t---!! Invalid data !!---\t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\tEnter your data again : \t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                gotoxy(105, 18);
+                                scanf("%10[^\n]s", newnode->data);
+                                getchar();
+                                fflush(stdin);
+                                check = validate_data(newnode->data);
+                                i = 1;
+                        }
+                        newnode->next = temp;
+                        newnode->prev = temp2;
+                        temp->prev = newnode;
+                        temp2->next = newnode;
+                        printf("\n");
+                        printf("\t\t\t\t\t\t\t\t|\t!! Data successfully added !! \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t|\t Press Enter to continue : \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                        gotoxy(105, 20 + i);
+                        getchar();
+                        fflush(stdin);
+                }
+        }
+        else if (x == '3') // Singly Circular Linked List Insertion before any node
+        {
+                if (head3 == NULL)
+                {
+                        in_at_beg(x);
+                        return;
+                }
+                int pos;
+                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                printf("\t\t\t\t\t\t\t\t|\t\tEnter your node : \t\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                gotoxy(102, 17);
+                scanf("%d", &pos);
+                getchar();
+                fflush(stdin);
+                clear();
+                y_center();
+                struct node *temp = head3;
+                struct node *temp2 = NULL;
+                int check = atoi(temp->data);
+                while (temp->next != head3 && check != pos)
+                {
+                        temp2 = temp;
+                        temp = temp->next;
+                        check = atoi(temp->data);
+                }
+                if (temp == head3 && temp2 == NULL && check == pos)
+                {
+                        in_at_beg(x);
+                        return;
+                }
+                if (temp->next == head3 && check != pos)
+                {
+                        printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t|\t\t!! Invalid Node  !! \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t|\t\tpress Enter to continue :  \t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                        gotoxy(105, 18);
+                        getchar();
+                        return;
+                }
+                int i = 0;
+                if (check == pos)
+                {
+                        struct node *newnode = (struct node *)malloc(sizeof(struct node));
+                        if (newnode == NULL)
+                        {
+                                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\t!! Memory is FULL !! \t\t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\tpress Enter to continue :  \t\t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                                gotoxy(105, 18);
+                                getchar();
+                                return;
+                        }
+                        count1++;
+                        printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t|\t\tEnter your data : \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        gotoxy(100, 17);
+                        scanf("%[^\n]s", newnode->data);
+                        getchar();
+                        fflush(stdin);
+                        int check = validate_data(newnode->data);
+                        while (check == 0)
+                        {
+                                system("cls");
+                                printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\t---!! Invalid data !!---\t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\tEnter your data again : \t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                gotoxy(105, 18);
+                                scanf("%10[^\n]s", newnode->data);
+                                getchar();
+                                fflush(stdin);
+                                check = validate_data(newnode->data);
+                                i = 1;
+                        }
+                        newnode->next = temp;
+                        temp2->next = newnode;
+                        printf("\n");
+                        printf("\t\t\t\t\t\t\t\t|\t!! Data successfully added !! \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t|\t Press Enter to continue : \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                        gotoxy(105, 20 + i);
+                        getchar();
+                        fflush(stdin);
+                }
+        }
+        else if (x == '4') // Doubly Circular Linked List Insertion before any node
+        {
+                if (head4 == NULL)
+                {
+                        in_at_beg(x);
+                        return;
+                }
+                int pos;
+                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                printf("\t\t\t\t\t\t\t\t|\t\tEnter your node : \t\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                gotoxy(102, 17);
+                scanf("%d", &pos);
+                getchar();
+                fflush(stdin);
+                clear();
+                y_center();
+                struct node *temp = head4;
+                struct node *temp2 = NULL;
+                int check = atoi(temp->data);
+                while (temp->next != head4 && check != pos)
+                {
+                        temp2 = temp;
+                        temp = temp->next;
+                        check = atoi(temp->data);
+                }
+                if (temp == head4 && temp2 == NULL && check == pos)
+                {
+                        in_at_beg(x);
+                        return;
+                }
+                if (temp->next == head4 && check != pos)
+                {
+                        printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t|\t\t!! Invalid Node  !! \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t|\t\tpress Enter to continue :  \t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                        gotoxy(105, 18);
+                        getchar();
+                        return;
+                }
+                int i = 0;
+                if (check == pos)
+                {
+                        struct node *newnode = (struct node *)malloc(sizeof(struct node));
+                        if (newnode == NULL)
+                        {
+                                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\t!! Memory is FULL !! \t\t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\tpress Enter to continue :  \t\t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                                gotoxy(105, 18);
+                                getchar();
+                                return;
+                        }
+                        count1++;
+                        printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t|\t\tEnter your data : \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        gotoxy(100, 17);
+                        scanf("%[^\n]s", newnode->data);
+                        getchar();
+                        fflush(stdin);
+                        int check = validate_data(newnode->data);
+                        while (check == 0)
+                        {
+                                system("cls");
+                                printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\t---!! Invalid data !!---\t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t|\t\tEnter your data again : \t\t|\n");
+                                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                                gotoxy(105, 18);
+                                scanf("%10[^\n]s", newnode->data);
+                                getchar();
+                                fflush(stdin);
+                                check = validate_data(newnode->data);
+                                i = 1;
+                        }
+                        newnode->next = temp;
+                        newnode->prev = temp2;
+                        temp->prev = newnode;
+                        temp2->next = newnode;
+                        printf("\n");
+                        printf("\t\t\t\t\t\t\t\t|\t!! Data successfully added !! \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t|\t Press Enter to continue : \t\t\t|\n");
+                        printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                        printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                        gotoxy(105, 20 + i);
+                        getchar();
+                        fflush(stdin);
+                }
+        }
+        else
+        {
+                gotoxy(5, 20);
+                printf("\t\t\t\t\t\t\t\t|\tError in Insert before Node/Press Enter to Try again : \t|\n");
+                gotoxy(115, 20);
+                getchar();
+                fflush(stdin);
+        }
+}
+
 void insert(char x)
 {
         char ch;
@@ -1511,6 +1923,9 @@ void insert(char x)
                         return;
                 case '4':
                         in_after_node(x);
+                        return;
+                case '5':
+                        in_before_node(x);
                         return;
                 case '9':
                         return;
@@ -1572,7 +1987,7 @@ void display(char x)
                                 printf("-> ");
                                 temp = temp->next;
                         }
-                        if (temp->next == NULL|| temp->next == head3)
+                        if (temp->next == NULL || temp->next == head3)
                                 printf("%s \n", temp->data);
                         printf("\t\t\t\t\t\t\t\t|\t\t\t\t\t\t\t|\n");
                         printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
@@ -1624,7 +2039,7 @@ void display(char x)
                                 printf("-> ");
                                 temp = temp->next;
                         }
-                        if (temp->next == NULL||temp->next == head4)
+                        if (temp->next == NULL || temp->next == head4)
                                 printf("%s \n", temp->data);
                         printf("\t\t\t\t\t\t\t\t|\t\t\t\t\t\t\t|\n");
                         printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
