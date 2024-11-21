@@ -88,6 +88,7 @@ void y_center() { printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"); }
 void x_center() { printf("\t\t\t\t\t\t\t\t"); }
 void decorate_line() { printf("\t\t\t\t\t\t\t\t_________________________________________________________\n"); }
 void decorate_star() { printf("\t\t\t\t\t\t\t\t*********************************************************\n"); }
+void decorate_dash() { printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n"); }
 
 void set_Full_Screen()
 {
@@ -1602,7 +1603,7 @@ void in_before_node(char x) // Insertion before any node
                         return;
                 }
                 temp = temp->next;
-                if (temp->next == NULL&& check!=pos)
+                if (temp->next == NULL && check != pos)
                 {
                         printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
                         printf("\t\t\t\t\t\t\t\t*********************************************************\n");
@@ -1878,9 +1879,30 @@ void in_before_node(char x) // Insertion before any node
         }
 }
 
+void del_at_beg(char x) // Deletion at Beginning
+{
+        color(6);
+        clear();
+        y_center();
+        if (x == '1') // Singly Linked List Deletion at Beginning
+        {
+                if (head1 == NULL)
+                {
+                        decorate_line();
+                        decorate_star();
+                        x_center();printf("|\t\t!! List is empty !! \t\t\t|\n");
+                        x_center();printf("|\t\tpress Enter to continue :\t\t|\n");
+                        decorate_star();
+                        decorate_dash();
+                        gotoxy(105, 18);
+                        getchar();
+                        return;
+                }
+                
+        }
+}
 
-
-void delete(char x)
+void del(char x)
 {
         char ch;
         do
@@ -1918,16 +1940,16 @@ void delete(char x)
                         del_at_beg(x);
                         return;
                 case '2':
-                        del_at_end(x);
+                        // del_at_end(x);
                         return;
                 case '3':
-                        del_at_pos(x);
+                        // del_at_pos(x);
                         return;
                 case '4':
-                        del_after_node(x);
+                        // del_after_node(x);
                         return;
                 case '5':
-                        del_before_node(x);
+                        // del_before_node(x);
                         return;
                 case '9':
                         return;
@@ -1951,7 +1973,7 @@ void insert(char x)
         do
         {
                 system("cls");
-                system("COLOR 4B");
+                system("COLOR A0");
                 printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                 printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
                 printf("\t\t\t\t\t\t\t\t*********************************************************\n");
@@ -2172,7 +2194,7 @@ void sub_main(char x)
                         insert(x);
                         break;
                 case '2':
-                        delete(x);
+                        del(x);
                         break;
                 case '3':
                         display(x);
