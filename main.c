@@ -1911,7 +1911,35 @@ void del_at_beg(char x) // Deletion at Beginning
                         gotoxy(105, 18);
                         getchar();
                 }
-
+        }
+        if (x == '2') // Doubly Linked List Deletion at Beginning
+        {
+                if (head2 == NULL)
+                {
+                        decorate_line();
+                        decorate_star();
+                        x_center();printf("|\t\t!! List is empty !! \t\t\t|\n");
+                        x_center();printf("|\t\tpress Enter to continue :\t\t|\n");
+                        decorate_star();
+                        gotoxy(105, 18);
+                        getchar();
+                        return;
+                }
+                else
+                {
+                        struct node* temp=head2;
+                        head2=head2->next;
+                        head2->prev=NULL;
+                        temp->next=NULL;
+                        decorate_line();
+                        decorate_star();
+                        x_center();printf("|\t\t!! Node of %s is deleted !! \t\t|\n",temp->data);
+                        x_center();printf("|\t\tpress Enter to continue :\t\t|\n");
+                        decorate_star();
+                        free(temp);
+                        gotoxy(105, 18);
+                        getchar();
+                }
         }
 }
 
