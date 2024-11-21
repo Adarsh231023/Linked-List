@@ -1893,12 +1893,25 @@ void del_at_beg(char x) // Deletion at Beginning
                         x_center();printf("|\t\t!! List is empty !! \t\t\t|\n");
                         x_center();printf("|\t\tpress Enter to continue :\t\t|\n");
                         decorate_star();
-                        decorate_dash();
                         gotoxy(105, 18);
                         getchar();
                         return;
                 }
-                
+                else
+                {
+                        struct node* temp=head1;
+                        head1=head1->next;
+                        temp->next=NULL;
+                        decorate_line();
+                        decorate_star();
+                        x_center();printf("|\t\t!! Node of %s is deleted !! \t\t|\n",temp->data);
+                        x_center();printf("|\t\tpress Enter to continue :\t\t|\n");
+                        decorate_star();
+                        free(temp);
+                        gotoxy(105, 18);
+                        getchar();
+                }
+
         }
 }
 
