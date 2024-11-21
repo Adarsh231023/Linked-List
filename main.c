@@ -1878,6 +1878,73 @@ void in_before_node(char x) // Insertion before any node
         }
 }
 
+
+
+void delete(char x)
+{
+        char ch;
+        do
+        {
+                system("cls");
+                system("COLOR 4B");
+                printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                printf("\t\t\t\t\t\t\t\t_________________________________________________________\n");
+                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                printf("\t\t\t\t\t\t\t\t|\t\t    DELETION - MENU\t\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                printf("\t\t\t\t\t\t\t\t|\t\t1. Delete at beg\t\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t|\t\t2. Delete at end\t\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t|\t\t3. Delete at position\t\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t|\t\t4. Delete after any node\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t|\t\t5. Delete before any node\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t|\t\t9. Previous Menu\t\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t|\t\t0. Exit\t\t\t\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                printf("\t\t\t\t\t\t\t\t|\t\tEnter your choice : \t\t\t|\n");
+                printf("\t\t\t\t\t\t\t\t*********************************************************\n");
+                printf("\t\t\t\t\t\t\t\t---------------------------------------------------------\n");
+                gotoxy(100, 27);
+                scanf("%[^\n]c", &ch);
+                getchar();
+                fflush(stdin);
+                char *p;
+                p = &ch;
+                int len = strlen(p);
+                if (len > 1)
+                        ch = '\n';
+                switch (ch)
+                {
+                case '1':
+                        del_at_beg(x);
+                        return;
+                case '2':
+                        del_at_end(x);
+                        return;
+                case '3':
+                        del_at_pos(x);
+                        return;
+                case '4':
+                        del_after_node(x);
+                        return;
+                case '5':
+                        del_before_node(x);
+                        return;
+                case '9':
+                        return;
+                case '0':
+                        check_exit();
+                        break;
+                default:
+                        gotoxy(5, 27);
+                        printf("\t\t\t\t\t\t\t\t|\tInvalid Choice/Press Enter to Try again : \t|\n");
+                        gotoxy(115, 27);
+                        getchar();
+                        fflush(stdin);
+                }
+                ch = ' ';
+        } while (1);
+}
+
 void insert(char x)
 {
         char ch;
@@ -2105,7 +2172,7 @@ void sub_main(char x)
                         insert(x);
                         break;
                 case '2':
-                        // delete(x);
+                        delete(x);
                         break;
                 case '3':
                         display(x);
