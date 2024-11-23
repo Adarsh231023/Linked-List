@@ -1908,6 +1908,7 @@ void del_at_beg(char x) // Deletion at Beginning
                         x_center();printf("|\t\tpress Enter to continue :\t\t|\n");
                         decorate_star();
                         free(temp);
+                        count1--;
                         gotoxy(105, 18);
                         getchar();
                 }
@@ -1929,7 +1930,6 @@ void del_at_beg(char x) // Deletion at Beginning
                 {
                         struct node* temp=head2;
                         head2=head2->next;
-                        head2->prev=NULL;
                         temp->next=NULL;
                         decorate_line();
                         decorate_star();
@@ -1937,6 +1937,7 @@ void del_at_beg(char x) // Deletion at Beginning
                         x_center();printf("|\t\tpress Enter to continue :\t\t|\n");
                         decorate_star();
                         free(temp);
+                        count2--;
                         gotoxy(105, 18);
                         getchar();
                 }
