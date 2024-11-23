@@ -1890,8 +1890,10 @@ void del_at_beg(char x) // Deletion at Beginning
                 {
                         decorate_line();
                         decorate_star();
-                        x_center();printf("|\t\t!! List is empty !! \t\t\t|\n");
-                        x_center();printf("|\t\tpress Enter to continue :\t\t|\n");
+                        x_center();
+                        printf("|\t\t!! List is empty !! \t\t\t|\n");
+                        x_center();
+                        printf("|\t\tpress Enter to continue :\t\t|\n");
                         decorate_star();
                         gotoxy(105, 18);
                         getchar();
@@ -1899,13 +1901,15 @@ void del_at_beg(char x) // Deletion at Beginning
                 }
                 else
                 {
-                        struct node* temp=head1;
-                        head1=head1->next;
-                        temp->next=NULL;
+                        struct node *temp = head1;
+                        head1 = head1->next;
+                        temp->next = NULL;
                         decorate_line();
                         decorate_star();
-                        x_center();printf("|\t\t!! Node of %s is deleted !! \t\t|\n",temp->data);
-                        x_center();printf("|\t\tpress Enter to continue :\t\t|\n");
+                        x_center();
+                        printf("|\t\t!! Node of %s is deleted !! \t\t|\n", temp->data);
+                        x_center();
+                        printf("|\t\tpress Enter to continue :\t\t|\n");
                         decorate_star();
                         free(temp);
                         count1--;
@@ -1919,8 +1923,10 @@ void del_at_beg(char x) // Deletion at Beginning
                 {
                         decorate_line();
                         decorate_star();
-                        x_center();printf("|\t\t!! List is empty !! \t\t\t|\n");
-                        x_center();printf("|\t\tpress Enter to continue :\t\t|\n");
+                        x_center();
+                        printf("|\t\t!! List is empty !! \t\t\t|\n");
+                        x_center();
+                        printf("|\t\tpress Enter to continue :\t\t|\n");
                         decorate_star();
                         gotoxy(105, 18);
                         getchar();
@@ -1928,16 +1934,95 @@ void del_at_beg(char x) // Deletion at Beginning
                 }
                 else
                 {
-                        struct node* temp=head2;
-                        head2=head2->next;
-                        temp->next=NULL;
+                        struct node *temp = head2;
+                        if (head2->next != NULL)
+                        {
+                                head2 = head2->next;
+                                head2->prev = NULL;
+                        }
+                        temp->next = NULL;
                         decorate_line();
                         decorate_star();
-                        x_center();printf("|\t\t!! Node of %s is deleted !! \t\t|\n",temp->data);
-                        x_center();printf("|\t\tpress Enter to continue :\t\t|\n");
+                        x_center();
+                        printf("|\t\t!! Node of %s is deleted !! \t\t|\n", temp->data);
+                        x_center();
+                        printf("|\t\tpress Enter to continue :\t\t|\n");
                         decorate_star();
                         free(temp);
                         count2--;
+                        gotoxy(105, 18);
+                        getchar();
+                }
+        }
+        if (x == '3') // Singly Circular Linked List Deletion at Beginning
+        {
+                if (head3 == NULL)
+                {
+                        decorate_line();
+                        decorate_star();
+                        x_center();
+                        printf("|\t\t!! List is empty !! \t\t\t|\n");
+                        x_center();
+                        printf("|\t\tpress Enter to continue :\t\t|\n");
+                        decorate_star();
+                        gotoxy(105, 18);
+                        getchar();
+                        return;
+                }
+                else
+                {
+                        struct node *temp = head3;
+                        struct node *temp2 = head3;
+                        head3 = head3->next;
+                        while (temp2->next != temp)
+                                temp2 = temp2->next;
+                        temp2->next = head3;
+                        temp->next = NULL;
+                        decorate_line();
+                        decorate_star();
+                        x_center();
+                        printf("|\t\t!! Node of %s is deleted !! \t\t|\n", temp->data);
+                        x_center();
+                        printf("|\t\tpress Enter to continue :\t\t|\n");
+                        decorate_star();
+                        free(temp);
+                        count3--;
+                        gotoxy(105, 18);
+                        getchar();
+                }
+        }
+        if (x == '4') // Doubly Circular Linked List Deletion at Beginning
+        {
+                if (head4 == NULL)
+                {
+                        decorate_line();
+                        decorate_star();
+                        x_center();
+                        printf("|\t\t!! List is empty !! \t\t\t|\n");
+                        x_center();
+                        printf("|\t\tpress Enter to continue :\t\t|\n");
+                        decorate_star();
+                        gotoxy(105, 18);
+                        getchar();
+                        return;
+                }
+                else
+                {
+                        struct node *temp = head4;
+                        head4 = head4->next;
+                        head4->prev = temp->prev;
+                        temp->prev->next = head4;
+                        temp->next = NULL;
+                        temp->prev = NULL;
+                        decorate_line();
+                        decorate_star();
+                        x_center();
+                        printf("|\t\t!! Node of %s is deleted !! \t\t|\n", temp->data);
+                        x_center();
+                        printf("|\t\tpress Enter to continue :\t\t|\n");
+                        decorate_star();
+                        free(temp);
+                        count4--;
                         gotoxy(105, 18);
                         getchar();
                 }
